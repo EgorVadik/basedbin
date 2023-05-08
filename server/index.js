@@ -62,7 +62,6 @@ app.get('/api/get-file', async (req, res) => {
 
 app.post('/api/save-file', async (req, res) => {
     const { id, content, name } = req.body
-    console.log(content)
     try {
         const file = await File.findById(id)
         file.content = content
