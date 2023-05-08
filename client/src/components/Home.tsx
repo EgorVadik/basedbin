@@ -11,7 +11,7 @@ function Home() {
 
     async function createNewFile() {
         const { newFile, error } = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/create-new-file}`,
+            `${import.meta.env.VITE_API_URL}/api/create-new-file`,
             // window.location.hostname === 'localhost'
             //     ? 'http://localhost:3000/api/create-new-file'
             //     : `${ALT_SERVER_URL}/api/create-new-file`,
