@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { ALT_SERVER_URL } from '../constants/constants'
+// import { ALT_SERVER_URL } from '../constants/constants'
 import localStore from '../utils/localStore'
 import PreviousCard from './PreviousCard'
 
@@ -11,9 +11,10 @@ function Home() {
 
     async function createNewFile() {
         const { newFile, error } = await fetch(
-            window.location.hostname === 'localhost'
-                ? 'http://localhost:3000/api/create-new-file'
-                : `${ALT_SERVER_URL}/api/create-new-file`,
+            `${import.meta.env.VITE_API_URL}/api/create-new-file}`,
+            // window.location.hostname === 'localhost'
+            //     ? 'http://localhost:3000/api/create-new-file'
+            //     : `${ALT_SERVER_URL}/api/create-new-file`,
             {
                 method: 'POST',
                 headers: {
@@ -37,10 +38,7 @@ function Home() {
                     }}
                 >
                     <div className='flex items-center gap-2'>
-                        <img
-                            src='./src/assets/icons/previous.svg'
-                            alt='History Icon'
-                        />
+                        <img src='/icons/previous.svg' alt='History Icon' />
                         <h1 className='text-3xl'>Previous Files</h1>
                     </div>
                     <div className='border-b border-[#27333D] w-full my-2'></div>

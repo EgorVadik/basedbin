@@ -44,7 +44,7 @@ function Top({ onSave, onCopy }: Props) {
                         }`}
                     >
                         <img
-                            src='/src/assets/icons/save.svg'
+                            src='/icons/save.svg'
                             width={25}
                             height={25}
                             alt='save'
@@ -61,7 +61,7 @@ function Top({ onSave, onCopy }: Props) {
                         }`}
                     >
                         <img
-                            src='/src/assets/icons/copy.svg'
+                            src='/icons/copy.svg'
                             width={25}
                             height={25}
                             alt='copy'

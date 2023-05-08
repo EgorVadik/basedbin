@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { ALT_SERVER_URL, BASE_SERVER_URL } from '../constants/constants'
+// import { ALT_SERVER_URL, BASE_SERVER_URL } from '../constants/constants'
 import localStore from '../utils/localStore'
 import Top from './Top'
 
@@ -26,9 +26,10 @@ function NewFileContent() {
 
     useEffect(() => {
         fetch(
-            window.location.hostname === 'localhost'
-                ? `http://localhost:3000/api/get-file?id=${id}`
-                : `${ALT_SERVER_URL}/api/get-file?id=${id}`
+            `${import.meta.env.VITE_API_URL}/api/get-file?id=${id}`
+            // window.location.hostname === 'localhost'
+            //     ? `http://localhost:3000/api/get-file?id=${id}`
+            //     : `${ALT_SERVER_URL}/api/get-file?id=${id}`
         )
             .then((res) => res.json())
             .then((data) => {
@@ -47,9 +48,10 @@ function NewFileContent() {
         textRef.current?.focus()
 
         socket = io(
-            window.location.hostname === 'localhost'
-                ? BASE_SERVER_URL
-                : ALT_SERVER_URL
+            import.meta.env.VITE_API_URL
+            // window.location.hostname === 'localhost'
+            //     ? BASE_SERVER_URL
+            //     : ALT_SERVER_URL
         )
 
         socket.on('connect', () => {
@@ -84,9 +86,10 @@ function NewFileContent() {
         if (saved) return
 
         const { error } = await fetch(
-            window.location.hostname === 'localhost'
-                ? 'http://localhost:3000/api/save-file'
-                : `${ALT_SERVER_URL}/api/save-file}`,
+            `${import.meta.env.VITE_API_URL}/api/save-file`,
+            // window.location.hostname === 'localhost'
+            //     ? 'http://localhost:3000/api/save-file'
+            //     : `${ALT_SERVER_URL}/api/save-file}`,
             {
                 method: 'POST',
                 headers: {
@@ -253,7 +256,7 @@ function NewFileContent() {
                         {saved ? (
                             <div className='flex items-center gap-1'>
                                 <img
-                                    src='./src/assets/icons/check-mark.svg'
+                                    src='/icons/check-mark.svg'
                                     alt='Check mark'
                                 />
                                 <p>Saved</p>
