@@ -3,7 +3,7 @@ const app = require('express')()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server, {
     cors: {
-        origin: [process.env.BASE_CLIENT_URL, process.env.ALT_CLIENT_URL],
+        origin: '*',
     },
 })
 const cors = require('cors')
@@ -12,7 +12,7 @@ const File = require('./models/file')
 
 app.use(
     cors({
-        origin: [process.env.BASE_CLIENT_URL, process.env.ALT_CLIENT_URL],
+        origin: '*',
     })
 )
 
